@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #CEFAFE, #F1DEFC, #ED97FE, #7EB6FD);
+        }
+        .content {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.61);
+            border: 3px solid rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15), inset 2px 2px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .content h2 {
+            padding: 10px 20px;
+            text-decoration: underline;
+            color: #444444;
+            text-align: center;
+        }
+        .input-field {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .input-field label {
+            font-size: 14px;
+            color: #444444;
+        }
+        .input-field .bill, .input-field .tip {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin: 10px 0;
+        }
+        .input-field .bill input, .input-field .tip input {
+            width: 100%;
+            height: 40px;
+            padding: 0 10px;
+            border-radius: 7px;
+            border: 2px solid white;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+            outline: none;
+        }
+        button {
+            width: 90%;
+            height: 40px;
+            margin: 10px;
+            border-radius: 7px;
+            background: #6fc276;
+            border: none;
+            outline: none;
+            font-weight: 700;
+            font-size: 18px;
+            color: #444444;
+            transition: all .2s ease;
+        }
+        button:hover {
+            background: #5ea564;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h2>Tip Calculator</h2>
+            <div class="input-field">
+                <div class="bill">
+                    <label for="bill-amount">Bill amount:</label>
+                    <input type="text" id="bill-amount" placeholder="Enter the bill amount">
+                </div>
+                <div class="tip">
+                    <label for="tip-percentage">Tip percentage:</label>
+                    <input type="text" id="tip-percentage" placeholder="Enter the tip percentage">
+                </div>
+            </div>
+            <button id="calculate-btn">Calculate</button>
+            <p id="total-amount"></p>
+            <p id="tip-amount"></p>
+        </div>
+    </div>
+    <script>
+        const calculateBtn = document.getElementById("calculate-btn");
+        const inputBill = document.getElementById("bill-amount");
+        const inputTip = document.getElementById("tip-percentage");
+
+
+
+        calculateBtn.addEventListener('click', ()=> {
+            const billAmount = Number(inputBill.value);
+            const tipPer = Number(inputTip.value);
+
+            const tip = billAmount * (tipPer / 100);
+
+            const totalBill = billAmount + tip;
+
+            const totalAmount = document.getElementById("total-amount");
+            const tipAmount = document.getElementById("tip-amount");
+
+            totalAmount.textContent = `Total Bill: ${totalBill}$`;
+            tipAmount.textContent = `Tip: ${tip}$`;
+        });
+
+
+    </script>
+</body>
+</html>
